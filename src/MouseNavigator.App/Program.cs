@@ -196,7 +196,7 @@ namespace MouseNavigator.App
             _lastPosition = Cursor.Position;
             _lastTime = DateTime.UtcNow;
 
-            _timer = new System.Windows.Forms.Timer { Interval = 1000 / Math.max(30, settings.AnimationFps) };
+            _timer = new System.Windows.Forms.Timer { Interval = 1000 / Math.Max(30, settings.AnimationFps) };
             _timer.Tick += OnTimerTick;
             _timer.Start();
         }
