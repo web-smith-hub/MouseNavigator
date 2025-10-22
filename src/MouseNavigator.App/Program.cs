@@ -187,7 +187,7 @@ namespace MouseNavigator.App
         private readonly AppSettings _settings;
         private Point _lastPosition;
         private DateTime _lastTime;
-        private readonly Timer _timer;
+        private readonly System.Windows.Forms.Timer _timer; // disambiguate
 
         public CursorWatcher(EdgeArrowOverlay overlay, AppSettings settings)
         {
@@ -196,7 +196,7 @@ namespace MouseNavigator.App
             _lastPosition = Cursor.Position;
             _lastTime = DateTime.UtcNow;
 
-            _timer = new Timer { Interval = 1000 / Math.Max(30, settings.AnimationFps) };
+            _timer = new System.Windows.Forms.Timer { Interval = 1000 / Math.max(30, settings.AnimationFps) };
             _timer.Tick += OnTimerTick;
             _timer.Start();
         }
@@ -314,7 +314,7 @@ namespace MouseNavigator.App
         private float _currentScale = 1f;
         private float _targetScale = 1f;
         private float _animationPhase;
-        private readonly Timer _animationTimer;
+        private readonly System.Windows.Forms.Timer _animationTimer; // disambiguate
         private AppSettings _settings;
         private Point _arrowPosition;
 
@@ -323,7 +323,7 @@ namespace MouseNavigator.App
             _settings = settings;
             InitializeOverlay();
 
-            _animationTimer = new Timer { Interval = 1000 / Math.Max(30, settings.AnimationFps) };
+            _animationTimer = new System.Windows.Forms.Timer { Interval = 1000 / Math.Max(30, settings.AnimationFps) };
             _animationTimer.Tick += OnAnimationTick;
             _animationTimer.Start();
         }
@@ -375,7 +375,7 @@ namespace MouseNavigator.App
             }
         }
 
-        public void Hide()
+        public new void Hide() // avoid CS0108 warning intentionally shadowing Control.Hide()
         {
             if (Visible)
             {
