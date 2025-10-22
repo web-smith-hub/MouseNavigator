@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MouseNavigator.App": {
+      "commandName": "Project",
+      "workingDirectory": "$(ProjectDir)",
+      "applicationUrl": "",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
